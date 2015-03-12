@@ -1,0 +1,27 @@
+= Omniwallet Functional Tests
+
+Browser-based functional testing of Omniwallet. Uses the http://www.gebish.org[Geb] browser automation and the http://spockframework.org[Spock Test Framework]. 
+
+== Prerequisites
+
+* Java JDK 7 or later
+
+== Running the tests
+
+To run tests using Chrome and Firefox on Mac OS X or Linux.
+
+    ./gradlew test
+
+On Windows, use:
+
+    ./gradlew.bat test
+
+As long as the JDK is correctly installed The Gradle wrapper script will automatically download and install the remaining prerequisites, if necesary, before running the tests.
+
+== Step 3
+
+There is no step 3.
+
+
+
+

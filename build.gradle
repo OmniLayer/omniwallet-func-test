@@ -2,8 +2,7 @@ import org.apache.tools.ant.taskdefs.condition.Os
 
 ext {
     // The drivers we want to use
-//    drivers = ["firefox", "chrome", "phantomJs"]  // phantomJS doesn't work with Angular.js???
-    drivers = ["firefox", "chrome"]
+    drivers = ["firefox", "chrome", "phantomJs"]
 
     ext {
         groovyVersion = '2.4.1'
@@ -69,12 +68,12 @@ chromeTest {
     systemProperty "webdriver.chrome.driver", new File(unzipChromeDriver.outputs.files.singleFile, chromedriverFilename).absolutePath
 }
 
-//phantomJsTest {
-//    dependsOn unzipPhantomJs
-//
-//    def phantomJsFilename = Os.isFamily(Os.FAMILY_WINDOWS) ? "phantomjs.exe" : "bin/phantomjs"
-//    systemProperty "phantomjs.binary.path", new File(unzipPhantomJs.outputs.files.singleFile, phantomJsFilename).absolutePath
-//}
+phantomJsTest {
+    dependsOn unzipPhantomJs
+
+    def phantomJsFilename = Os.isFamily(Os.FAMILY_WINDOWS) ? "phantomjs.exe" : "bin/phantomjs"
+    systemProperty "phantomjs.binary.path", new File(unzipPhantomJs.outputs.files.singleFile, phantomJsFilename).absolutePath
+}
 
 test {
     dependsOn drivers.collect { tasks["${it}Test"] }

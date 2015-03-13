@@ -5,9 +5,12 @@
 */
 
 
+import org.openqa.selenium.Dimension
 import org.openqa.selenium.chrome.ChromeDriver
 import org.openqa.selenium.firefox.FirefoxDriver
 import org.openqa.selenium.phantomjs.PhantomJSDriver
+import org.openqa.selenium.phantomjs.PhantomJSDriverService
+import org.openqa.selenium.remote.DesiredCapabilities
 
 waiting {
 	timeout = 2
@@ -28,7 +31,19 @@ environments {
 	}
 
     phantomJs {
-        driver = { new PhantomJSDriver() }
+        driver = { 
+            ArrayList cliArgsCap = new ArrayList();
+            cliArgsCap.add("--web-security=false");
+            cliArgsCap.add("--ssl-protocol=any");
+            cliArgsCap.add("--ignore-ssl-errors=true");
+ 
+            DesiredCapabilities desiredCapabilities = new DesiredCapabilities()
+            desiredCapabilities.setCapability(PhantomJSDriverService.PHANTOMJS_CLI_ARGS, cliArgsCap);
+ 
+            def d = new PhantomJSDriver(desiredCapabilities)
+            d.manage().window().setSize(new Dimension(1028, 768))
+            return d
+        }
     }
 
 }

@@ -12,7 +12,7 @@ Browser-based functional testing of Omniwallet. Uses the http://www.gebish.org[G
 
 To run the tests from your desktop, clone this repository and use the Gradle wrapper script to run the tests.
 
-To run tests using Chrome and Firefox on Mac OS X or Linux.
+To run tests using Chrome, Firefox, and http://phantomjs.org[PhantomJS] on Mac OS X or Linux.
 
     ./gradlew test
 
@@ -22,11 +22,12 @@ On Windows, use:
 
 As long as the JDK is correctly installed The Gradle wrapper script will automatically download and install the remaining prerequisites, if necesary, before running the tests.
 
-If you only want to run the Chrome or Firefox tests, replace the Gradle `test` target with `chromeTest` or `firefoxTest` respectively
+If you want to run tests with a single browser, replace the Gradle `test` target with `chromeTest`, `firefoxTest`, or `phantomJsTest` respectively.
 
-== Step 3
+== CI (Jenkins)
 
-There is no step 3.
+The http://ci.omni.foundation/job/omniwallet-func-test/[omniwallet-func-test job] runs these tests headlessly using PhantomJS.
+
 
 
 

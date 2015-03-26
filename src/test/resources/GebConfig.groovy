@@ -32,16 +32,14 @@ environments {
 
     phantomJs {
         driver = { 
-            ArrayList cliArgsCap = new ArrayList();
-            cliArgsCap.add("--web-security=false");
-            cliArgsCap.add("--ssl-protocol=any");
-            cliArgsCap.add("--ignore-ssl-errors=true");
- 
-            DesiredCapabilities desiredCapabilities = new DesiredCapabilities()
-            desiredCapabilities.setCapability(PhantomJSDriverService.PHANTOMJS_CLI_ARGS, cliArgsCap);
- 
+            def cliArgsCap = []
+            cliArgsCap.addAll(['--web-security=false', '--ssl-protocol=any', '--ignore-ssl-errors=true'])
+
+            def desiredCapabilities = new DesiredCapabilities()
+            desiredCapabilities.setCapability(PhantomJSDriverService.PHANTOMJS_CLI_ARGS, cliArgsCap)
+
             def d = new PhantomJSDriver(desiredCapabilities)
-            d.manage().window().setSize(new Dimension(1028, 768))
+            d.manage().window().size = new Dimension(1028, 768)
             return d
         }
     }

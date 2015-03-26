@@ -39,7 +39,7 @@ environments {
             desiredCapabilities.setCapability(PhantomJSDriverService.PHANTOMJS_CLI_ARGS, cliArgsCap)
 
             def d = new PhantomJSDriver(desiredCapabilities)
-            d.manage().window().size = new Dimension(1028, 768)
+            d.manage().window().size = new Dimension(1024, 768)
             return d
         }
     }

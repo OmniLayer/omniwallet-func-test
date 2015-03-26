@@ -33,7 +33,7 @@ environments {
     phantomJs {
         driver = { 
             def cliArgsCap = []
-            cliArgsCap.addAll(['--web-security=false', '--ssl-protocol=any', '--ignore-ssl-errors=true'])
+            cliArgsCap.addAll(['--ssl-protocol=any', '--ignore-ssl-errors=true'])
 
             def desiredCapabilities = new DesiredCapabilities()
             desiredCapabilities.setCapability(PhantomJSDriverService.PHANTOMJS_CLI_ARGS, cliArgsCap)
